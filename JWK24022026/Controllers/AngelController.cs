@@ -4,32 +4,30 @@ namespace JWK24022026.AppMVC.Controllers
 {
     public class AngelController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Suma()
-        {
-            return View();
-        }
-
         [HttpPost]
-        public IActionResult Suma(double num1, double num2)
+        public IActionResult Index(double numero1, double numero2, string operacion)
         {
-            ViewBag.Resultado = num1 + num2;
-            return View();
-        }
+            double resultado = 0;
 
-        public IActionResult Restar()
-        {
-            return View();
-        }
+            if (operacion == "Sumar")
+            {
+                resultado = numero1 + numero2;
+            }
+            else if (operacion == "Restar")
+            {
+                resultado = numero1 - numero2;
+            }
 
-        [HttpPost]
-        public IActionResult Restar(double num1, double num2)
-        {
-            ViewBag.Resultado = num1 - num2;
+            ViewBag.Numero1 = numero1;
+            ViewBag.Numero2 = numero2;
+            ViewBag.Resultado = resultado;
+
             return View();
         }
     }

@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Calculadora Angel";
+}
+
+<style>
+    .contenedor {
+        width: 400px;
+        margin: 60px auto;
+        text-align: center;
+    }
+
+    input[type="number"] {
+        width: 100px;
+        height: 35px;
+        margin: 10px;
+        font-size: 16px;
+        text-align: center;
+    }
+
+    button {
+        width: 100px;
+        height: 40px;
+        margin: 10px;
+        background-color: #1e88e5;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .resultado {
+        margin-top: 20px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="contenedor">
+
+    <h2>Calculadora de suma y resta</h2>
+
+    <form asp-action="Index" method="post">
+
+        <input type="number" name="numero1" value="@ViewBag.Numero1" required />
+        <input type="number" name="numero2" value="@ViewBag.Numero2" required />
+
+        <br />
+
+        <button type="submit" name="operacion" value="Sumar">Sumar</button>
+        <button type="submit" name="operacion" value="Restar">Restar</button>
+
+    </form>
+
+    @if (ViewBag.Resultado != null)
+    {
+        <div class="resultado">
+            Resultado: @ViewBag.Resultado
+        </div>
+    }
+
+</div>
